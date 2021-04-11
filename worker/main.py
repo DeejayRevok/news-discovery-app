@@ -13,7 +13,7 @@ from news_service_lib.server_utils import load_config
 
 from config import CONFIGS_PATH, config
 from log_config import LOG_CONFIG, get_logger
-from container_config import load, container
+from worker.container_config import load, container
 
 asynpool.PROC_ALIVE_TIMEOUT = 60.0
 CELERY_APP = BaseCeleryApp('News discovery app', ['worker.celery_tasks'])

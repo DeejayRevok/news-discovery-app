@@ -9,7 +9,7 @@ from news_service_lib.messaging import ExchangePublisher
 
 from config import config
 from log_config import get_logger
-from container_config import container
+from worker.container_config import container
 from worker.main import CELERY_APP
 from discovery.definitions import DEFINITIONS
 
