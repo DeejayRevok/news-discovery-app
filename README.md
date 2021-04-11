@@ -1,6 +1,7 @@
 # news-discovery-app
 News discovery application
 
+[![News Discovery App](https://github.com/DeejayRevok/news-discovery-app/actions/workflows/pythonapp.yml/badge.svg?branch=develop)](https://github.com/DeejayRevok/news-discovery-app/actions/workflows/pythonapp.yml)
 [![codecov](https://codecov.io/gh/DeejayRevok/news-discovery-app/branch/develop/graph/badge.svg?token=5IMQQ2B7QP)](https://codecov.io/gh/DeejayRevok/news-discovery-app)
 
 ### Local running
