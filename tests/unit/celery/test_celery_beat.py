@@ -12,7 +12,7 @@ class TestCeleryBeat(TestCase):
     """
     Celery beat test cases implementation
     """
-    @patch('news_discovery_scheduler.celery_beat.BaseCeleryApp')
+    @patch('worker.beat.BaseCeleryApp')
     def test_setup_periodic_tasks(self, _):
         """
         Test setting up the periodic tasks add one periodic task for each definition

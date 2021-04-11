@@ -16,7 +16,7 @@ from log_config import LOG_CONFIG, get_logger
 from container_config import load, container
 
 asynpool.PROC_ALIVE_TIMEOUT = 60.0
-CELERY_APP = BaseCeleryApp('News discovery app', ['news_discovery_scheduler.celery_tasks'])
+CELERY_APP = BaseCeleryApp('News discovery app', ['worker.celery_tasks'])
 LOGGER = get_logger()
 
 

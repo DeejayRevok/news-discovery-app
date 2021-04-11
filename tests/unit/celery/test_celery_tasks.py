@@ -36,8 +36,8 @@ class TestCeleryTasks(TestCase):
         cls.exchange_publisher_mock = Mock(spec=ExchangePublisher)
         container.set('exchange_publisher', cls.exchange_publisher_mock)
 
-    @patch('news_discovery_scheduler.celery_tasks.CELERY_APP')
-    @patch('news_discovery_scheduler.celery_tasks.DEFINITIONS')
+    @patch('worker.celery_tasks.CELERY_APP')
+    @patch('worker.celery_tasks.DEFINITIONS')
     def test_discover_news(self, definitions_mock, _):
         """
         Test discover news publish the discovered news
