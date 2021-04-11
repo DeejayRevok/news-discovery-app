@@ -1,6 +1,8 @@
 # news-discovery-app
 News discovery application
 
+[![codecov](https://codecov.io/gh/DeejayRevok/news-discovery-app/branch/develop/graph/badge.svg?token=5IMQQ2B7QP)](https://codecov.io/gh/DeejayRevok/news-discovery-app)
+
 ### Local running
 
 Run the parent's repo dev docker compose.
