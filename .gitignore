@@ -1,4 +1,7 @@
 .idea
+**charts**
+*.tgz
+*.lock
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

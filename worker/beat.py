@@ -39,7 +39,7 @@ def main(profile: str):
         profile: profile used to run the beat
 
     """
-    load_config(profile, CONFIGS_PATH, config)
+    load_config(profile, CONFIGS_PATH, config, 'NEWS_DISCOVERY')
 
     add_logstash_handler(LOG_CONFIG, config.logstash.host, config.logstash.port)
     CELERY_BEAT.configure(task_queue_name='news-discovery',

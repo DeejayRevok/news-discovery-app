@@ -1,0 +1,1 @@
+News discovery application chart
