@@ -28,7 +28,7 @@ def main(profile: str):
         profile: profile used to run the app
 
     """
-    load_config(profile, CONFIGS_PATH, config)
+    load_config(profile, CONFIGS_PATH, config, 'NEWS_DISCOVERY')
     load()
     publisher = container.get('exchange_publisher')
     if not publisher.test_connection():

@@ -11,13 +11,6 @@ spec:
       - configMapRef:
           name: news-discovery-configmap
     image: djrevok/news-discovery-app:latest
-    livenessProbe:
-      exec:
-        command:
-        - celery -b amqp://guest:guest@rabbitmq:5672 inspect ping -d celery@$HOSTNAME
-      failureThreshold: 10
-      periodSeconds: 2
-      timeoutSeconds: 20
     name: news-discovery-app
     resources: {}
   restartPolicy: OnFailure
