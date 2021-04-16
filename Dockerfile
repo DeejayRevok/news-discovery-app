@@ -13,4 +13,4 @@ RUN pip install -r news_discovery_app/requirements.txt
 
 COPY ./tools_config/metricbeat.yml /etc/metricbeat/metricbeat.yml
 
-CMD service metricbeat start && export PYTHONPATH=${PYTHONPATH}:/app/news_discovery_app && python ./news_discovery_app/main.py -p DOCKER
+CMD service metricbeat start && export PYTHONPATH=${PYTHONPATH}:/app/news_discovery_app && python ./news_discovery_app/worker/main.py -p DOCKER
