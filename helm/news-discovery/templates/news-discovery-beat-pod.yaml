@@ -10,7 +10,7 @@ spec:
   - envFrom:
       - configMapRef:
           name: news-discovery-configmap
-    image: djrevok/news-discovery-beat:latest
+    image: 'djrevok/news-discovery-beat:{{ .Chart.AppVersion }}'
     name: news-discovery-beat
     resources: {}
   restartPolicy: OnFailure

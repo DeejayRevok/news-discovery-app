@@ -1,6 +1,9 @@
-name: News Discovery App
+name: News Discovery CI
 
-on: [push]
+on:
+  push:
+    branches-ignore:
+      - master
 
 jobs:
 
