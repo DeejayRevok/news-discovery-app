@@ -1,0 +1,13 @@
+name: news-discovery
+description: News discovery app helm chart
+version: 0.0.0
+appVersion: latest
+apiVersion: v1
+keywords:
+  - news-discovery
+sources:
+home:
+dependencies:
+  - name: rabbit
+    version: 0.1.0
+    repository: "https://deejayrevok.github.io/helm-repo"
