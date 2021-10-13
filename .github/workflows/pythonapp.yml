@@ -32,6 +32,7 @@ jobs:
         run: tox -e coverage_check
       - name: Generate coverage report
         run: tox -e coverage_report
+      - name: Codecov upload
         uses: codecov/codecov-action@v1.0.5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
