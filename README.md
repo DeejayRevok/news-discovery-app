@@ -13,11 +13,11 @@ Run the parent's repo dev docker compose.
 Inside the application folder run:
 ```
 export PYTHONPATH={FULL_PATH_TO_APPLICATION_FOLDER}
-pip install -r requirements.txt
-python worker/main.py -p LOCAL
+pip install -r requirements-prod.txt
+python worker/main.py -c ./configs/config_local.yml
 ```
 ```
 export PYTHONPATH={FULL_PATH_TO_APPLICATION_FOLDER}
 pip install -r requirements-beat.txt
-python worker/beat.py -p LOCAL
+python worker/beat.py -c ./configs/config_local.yml
 ```
