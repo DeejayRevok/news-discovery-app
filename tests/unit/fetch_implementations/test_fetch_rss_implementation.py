@@ -1,6 +1,3 @@
-"""
-Fetch RSS implementation tests module
-"""
 from unittest import TestCase
 from unittest.mock import MagicMock
 
@@ -8,13 +5,7 @@ from discovery.fetch_implementations.fetch_rss_news_implementation import FetchR
 
 
 class TestFetchRSSImplementation(TestCase):
-    """
-    Fetch RSS implementation test cases implementation
-    """
     def test_fetch(self):
-        """
-        Test calling the fetch rss implementation yields from the source adapters
-        """
         source_adapter_1 = MagicMock()
         source_adapter_2 = MagicMock()
         test_definition = dict(source_adapters=[source_adapter_1, source_adapter_2])
