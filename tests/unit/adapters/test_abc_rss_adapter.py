@@ -1,6 +1,3 @@
-"""
-ABC rss adapter tests module
-"""
 import unittest
 from os.path import join, dirname
 from unittest.mock import patch
@@ -11,31 +8,19 @@ from discovery.adapters.abc_rss_news_adapter import ABCRssNewsAdapter
 
 
 def adapt_pass(value):
-    """
-    Mocked helper function on adapt
-    """
     return list(value)
 
 
 class MockedResponse:
-    """
-    Mocked response helper function
-    """
     def __init__(self, content):
         self.content = content
 
 
 class TestABCRssAdapter(unittest.TestCase):
-    """
-    ABC Rss adapter test cases implementation
-    """
-    XML_RESPONSE_PATH = join(dirname(dirname(__file__)), 'resources', 'abc_news_response.xml')
+    XML_RESPONSE_PATH = join(dirname(dirname(__file__)), "resources", "abc_news_response.xml")
 
     def setUp(self):
-        """
-        Set up the environment for testing reading the xml response file
-        """
-        with open(self.XML_RESPONSE_PATH, 'r') as xml_response_file:
+        with open(self.XML_RESPONSE_PATH, "r") as xml_response_file:
             self.mocked_xml_response = MockedResponse(xml_response_file.read())
             self.mocked_elements = []
             rss = fromstring(self.mocked_xml_response.content)
@@ -44,13 +29,10 @@ class TestABCRssAdapter(unittest.TestCase):
                     if item.tag == ABCRssNewsAdapter.ROOT_NEW_TAG:
                         self.mocked_elements.append(item)
 
-    @patch('requests.get')
+    @patch("requests.get")
     def test_fetch(self, requests_get):
-        """
-        Test fetching elements from rss return xml elements
-        """
         requests_get.return_value = self.mocked_xml_response
-        xml_rss_adapter = ABCRssNewsAdapter({'abc_rss': None})
+        xml_rss_adapter = ABCRssNewsAdapter({"abc_rss": None})
         xml_rss_adapter.adapt = adapt_pass
         fetch_return = list(xml_rss_adapter._fetch())
         self.assertEqual(len(fetch_return), 2)
@@ -58,15 +40,12 @@ class TestABCRssAdapter(unittest.TestCase):
             self.assertTrue(isinstance(elem, Element))
 
     def test_adapt(self):
-        """
-        Test adapt news returns parsed news
-        """
-        xml_rss_adapter = ABCRssNewsAdapter({'abc_rss': None})
+        xml_rss_adapter = ABCRssNewsAdapter({"abc_rss": None})
         adapt_return = list(xml_rss_adapter.adapt(self.mocked_elements))
         self.assertEqual(len(adapt_return), 2)
         for adapted_elem in adapt_return:
             self.assertTrue(isinstance(adapted_elem, New))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
