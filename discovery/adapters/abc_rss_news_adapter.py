@@ -46,7 +46,7 @@ class ABCRssNewsAdapter(SourceAdapter):
             content=content,
             source="ABC",
             date=date,
-            language=Language.SPANISH,
+            language=Language.SPANISH.value,
         )
 
     def _parse_content(self, html_string: str) -> str:
