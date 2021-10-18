@@ -42,7 +42,7 @@ class ConfidencialRssNewsAdapter(SourceAdapter):
             content=content,
             source="El Confidencial",
             date=date,
-            language=Language.SPANISH,
+            language=Language.SPANISH.value,
         )
 
     def _parse_content(self, html_string: str) -> str:
