@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:maz="http://www.mazdigital.com/media/" xmlns:media="http://search.yahoo.com/mrss/" version="2.0">
+    <channel>
+        <atom:link href="https://www.politico.com/rss/politicopicks.xml" rel="self" type="application/rss+xml"/>
+        <title>Politics, Policy, Political News Top Stories</title>
+        <link>https://www.politico.com/</link>
+        <description>Politics, Policy, Political News Top Stories</description>
+        <language>en-us</language>
+        <copyright>2022 POLITICO</copyright>
+        <pubDate>Mon, 21 Feb 2022 13:35:18 EST</pubDate>
+        <item>
+            <title>test_title</title>
+            <link>test_link</link>
+            <description>Once a top Trump choice to head the USDA, Texas Agriculture Commissioner Sid Miller is facing turbulence in the March 1 primary.</description>
+            <guid>https://www.politico.com/news/2022/02/21/trumps-favorite-cowboy-faces-gop-revolt-00010401</guid>
+            <pubDate>Mon, 21 Feb 2022 07:00:00 EST</pubDate>
+            <dc:creator>Ximena Bustillo</dc:creator>
+            <dc:contributor>Ximena Bustillo</dc:contributor>
+            <media:content type="image/jpeg" url="https://static.politico.com/7f/aa/f89947bd427a903017307dd48827/trump-60676.jpg">
+                <media:credit scheme="urn:ebu">Evan Vucci/AP Photo</media:credit>
+                <media:title>Texas Agriculture Commissioner Sid Miller arrives at Mar-a-Lago to meet with President-elect Donald Trump's transition team, Friday, Dec. 30, 2016, in Palm Beach, Fla.</media:title>
+                <media:thumbnail url="https://static.politico.com/7f/aa/f89947bd427a903017307dd48827/trump-60676.jpg"/>
+            </media:content>
+            <maz:template>core</maz:template>
+            <maz:modified>1645451424533</maz:modified>
+            <content:encoded>
+                <![CDATA[ <html><p>test_content</p></html> ]]>
+            </content:encoded>
+        </item>
+    </channel>
+</rss>
