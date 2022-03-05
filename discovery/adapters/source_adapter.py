@@ -18,7 +18,10 @@ class SourceAdapter:
     def adapt(self, fetched_items: Iterator[Any]) -> Iterator[New]:
         for item in fetched_items:
             try:
-                yield self._adapt_single(item)
+                adapted_item = self._adapt_single(item)
+                if adapted_item is None:
+                    continue
+                yield adapted_item
             except Exception as ex:
                 LOGGER.error("Error while adapting new: %s", str(ex))
 

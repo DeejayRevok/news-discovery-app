@@ -16,7 +16,7 @@ LOGGER = get_logger()
 
 
 class ConfidencialRssNewsAdapter(SourceAdapter):
-    DATE_INPUT_FORMAT = "%a, %d %b %Y %H:%M:%S %z"
+    DATE_INPUT_FORMAT = "%Y-%m-%dT%H:%M:%S%z"
     ROOT_NEW_TAG = "{http://www.w3.org/2005/Atom}entry"
 
     def _fetch(self) -> Iterator[Element]:
@@ -34,7 +34,7 @@ class ConfidencialRssNewsAdapter(SourceAdapter):
         content = self._parse_content(new_dict["ns0:content"]["#text"])
         url = next(filter(lambda link: link["rel"] == "alternate", new_dict["ns0:link"]), dict(href=""))["href"]
 
-        date = mktime(strptime(new_dict["ns0:published"], "%Y-%m-%dT%H:%M:%S%z"))
+        date = mktime(strptime(new_dict["ns0:published"], self.DATE_INPUT_FORMAT))
 
         return New(
             title=new_dict["ns0:title"],
