@@ -1,4 +1,4 @@
-git+http://github.com/DeejayRevok/news-service-lib.git@3.0.0
+git+http://github.com/DeejayRevok/news-service-lib.git@3.1.0
 celery
 elastic-apm
 requests==2.23.0
