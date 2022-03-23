@@ -38,5 +38,6 @@ class TestPoliticoAdapter(TestCase):
             source="Politico",
             date=expected_date,
             language=Language.ENGLISH.value,
+            image="https://test.com/test.jpg",
         )
         self.assertCountEqual([expected_new], fetch_return)

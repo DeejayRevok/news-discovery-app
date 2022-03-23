@@ -36,7 +36,7 @@ class ABCRssNewsAdapter(SourceAdapter):
         new_dict = parse(tostring(item).decode(), attr_prefix="")[self.ROOT_NEW_TAG]
         LOGGER.info("Found new with title %s", new_dict["title"])
 
-        content = self._parse_content(new_dict["description"])
+        content = self.__parse_content(new_dict["description"])
 
         date = mktime(strptime(new_dict["pubDate"], self.DATE_INPUT_FORMAT))
 
@@ -49,9 +49,9 @@ class ABCRssNewsAdapter(SourceAdapter):
             language=Language.SPANISH.value,
         )
 
-    def _parse_content(self, html_string: str) -> str:
+    def __parse_content(self, html_string: str) -> str:
         if html.fromstring(html_string).find(".//*") is not None:
             html_content = BeautifulSoup(html_string, "html.parser").text
-            return self._parse_content(html_content)
+            return self.__parse_content(html_content)
         else:
             return html_string
