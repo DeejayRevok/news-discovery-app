@@ -45,6 +45,7 @@ class PoliticoRSSNewsAdapter(SourceAdapter):
             source="Politico",
             date=date,
             language=Language.ENGLISH.value,
+            image=self.__get_image_url(raw_new_dict),
         )
 
     def __parse_content(self, html_string: str) -> str:
@@ -53,3 +54,9 @@ class PoliticoRSSNewsAdapter(SourceAdapter):
             return self.__parse_content(html_content)
         else:
             return html_string
+
+    def __get_image_url(self, raw_new_dict: dict) -> Optional[str]:
+        image_content = raw_new_dict.get("ns1:content")
+        if image_content is None:
+            return None
+        return image_content.get("url")
