@@ -1,6 +1,6 @@
 from news_service_lib.models.language import Language
 from time import mktime, strptime
-from typing import Iterator
+from typing import Iterator, Optional
 from xml.etree.ElementTree import Element, fromstring, tostring
 
 import requests
@@ -31,7 +31,7 @@ class ConfidencialRssNewsAdapter(SourceAdapter):
         new_dict = parse(tostring(item).decode(), attr_prefix="")["ns0:entry"]
         LOGGER.info("Found new with title %s", new_dict["ns0:title"])
 
-        content = self._parse_content(new_dict["ns0:content"]["#text"])
+        content = self.__parse_content(new_dict["ns0:content"]["#text"])
         url = next(filter(lambda link: link["rel"] == "alternate", new_dict["ns0:link"]), dict(href=""))["href"]
 
         date = mktime(strptime(new_dict["ns0:published"], self.DATE_INPUT_FORMAT))
@@ -43,11 +43,18 @@ class ConfidencialRssNewsAdapter(SourceAdapter):
             source="El Confidencial",
             date=date,
             language=Language.SPANISH.value,
+            image=self.__get_image_url(new_dict),
         )
 
-    def _parse_content(self, html_string: str) -> str:
+    def __parse_content(self, html_string: str) -> str:
         if html.fromstring(html_string).find(".//*") is not None:
             html_content = BeautifulSoup(html_string, "html.parser").text
-            return self._parse_content(html_content)
+            return self.__parse_content(html_content)
         else:
             return html_string
+
+    def __get_image_url(self, raw_new_dict: dict) -> Optional[str]:
+        image_content = raw_new_dict.get("ns2:content")
+        if image_content is None:
+            return None
+        return image_content.get("url")

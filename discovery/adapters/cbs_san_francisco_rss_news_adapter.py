@@ -1,7 +1,7 @@
 from time import mktime, strptime
 import requests
 from xml.etree.ElementTree import Element, fromstring, tostring
-from typing import ClassVar, Iterator
+from typing import ClassVar, Iterator, Optional
 
 from bs4 import BeautifulSoup
 from lxml import html
@@ -42,6 +42,7 @@ class CBSSanFranciscoRSSNewsAdapter(SourceAdapter):
             source="CBS San Francisco",
             date=date,
             language=Language.ENGLISH.value,
+            image=self.__get_image_url(raw_new_dict),
         )
 
     def __parse_content(self, html_string: str) -> str:
@@ -50,3 +51,9 @@ class CBSSanFranciscoRSSNewsAdapter(SourceAdapter):
             return self.__parse_content(html_content)
         else:
             return html_string
+
+    def __get_image_url(self, raw_new_dict: dict) -> Optional[str]:
+        image_content = raw_new_dict.get("ns1:content")
+        if image_content is None:
+            return None
+        return image_content.get("url")
