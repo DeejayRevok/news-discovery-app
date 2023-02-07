@@ -5,9 +5,6 @@ metadata:
     app.kubernetes.io/name: news-discovery-abc
   name: news-discovery-abc
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: news-discovery-abc
   schedule: "*/10 * * * *"
   jobTemplate:
     spec:
@@ -36,9 +33,6 @@ metadata:
     app.kubernetes.io/name: news-discovery-politico
   name: news-discovery-politico
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: news-discovery-politico
   schedule: "*/10 * * * *"
   jobTemplate:
     spec:
@@ -67,9 +61,6 @@ metadata:
     app.kubernetes.io/name: news-discovery-el-confidencial
   name: news-discovery-el-confidencial
 spec:
-  selector:
-    matchLabels:
-      app.kubernetes.io/name: news-discovery-el-confidencial
   schedule: "*/10 * * * *"
   jobTemplate:
     spec:
@@ -85,7 +76,7 @@ spec:
               command:
                 - make
                 - run_news_discovery
-                - SOURCE_NAME="\"El Confidencial\""
+                - SOURCE_NAME="El Confidencial"
               envFrom:
                 - configMapRef:
                     name: news-discovery-configmap
