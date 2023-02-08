@@ -18,8 +18,10 @@ def load() -> None:
             "infrastructure.third_party_news_fetcher_selector.ThirdPartyNewsFetcherSelector",
             [
                 Argument.no_kw_argument("@infrastructure.abc.abc_news_fetcher.ABCNewsFetcher"),
-                Argument.no_kw_argument("@infrastructure.confidencial.confidencial_news_fetcher.ConfidencialNewsFetcher"),
-                Argument.no_kw_argument("@infrastructure.politico.politico_news_fetcher.PoliticoNewsFetcher")
-            ]
+                Argument.no_kw_argument(
+                    "@infrastructure.confidencial.confidencial_news_fetcher.ConfidencialNewsFetcher"
+                ),
+                Argument.no_kw_argument("@infrastructure.politico.politico_news_fetcher.PoliticoNewsFetcher"),
+            ],
         )
     )

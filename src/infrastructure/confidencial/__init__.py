@@ -15,7 +15,9 @@ def load() -> None:
             "infrastructure.confidencial.confidencial_news_fetcher.ConfidencialNewsFetcher",
             "infrastructure.confidencial.confidencial_news_fetcher.ConfidencialNewsFetcher",
             [
-                Argument.no_kw_argument("@infrastructure.confidencial.confidencial_response_to_news_transformer.ConfidencialResponseToNewsTransformer")
-            ]
+                Argument.no_kw_argument(
+                    "@infrastructure.confidencial.confidencial_response_to_news_transformer.ConfidencialResponseToNewsTransformer"
+                )
+            ],
         )
     )

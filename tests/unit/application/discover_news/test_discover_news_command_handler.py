@@ -25,9 +25,7 @@ class TestDiscoverNewsCommandHandler(TestCase):
         self.event_bus_mock = Mock(spec=EventBus)
         self.logger_mock = Mock(spec=Logger)
         self.command_handler = DiscoverNewsCommandHandler(
-            self.news_fetcher_selector_mock,
-            self.event_bus_mock,
-            self.logger_mock
+            self.news_fetcher_selector_mock, self.event_bus_mock, self.logger_mock
         )
 
     def test_handle_success(self):
@@ -43,32 +41,35 @@ class TestDiscoverNewsCommandHandler(TestCase):
         test_news_fetcher = Mock(spec=NewsFetcher)
         self.news_fetcher_selector_mock.select.return_value = test_news_fetcher
         test_news_fetcher.fetch.return_value = [test_new, test_new]
-        test_command = DiscoverNewsCommand(
-            news_source="ABC"
-        )
+        test_command = DiscoverNewsCommand(news_source="ABC")
 
         self.command_handler.handle(test_command)
 
         self.news_fetcher_selector_mock.select.assert_called_once_with(NewsSource.ABC)
         test_news_fetcher.fetch.assert_called_once_with()
         self.event_bus_mock.transport.assert_has_calls(
-            [call(NewDiscoveredEvent(
-                title="test_new",
-                content="test_content",
-                url="test_url",
-                date=1231312.89,
-                language=Language.ENGLISH.value,
-                source=NewsSource.ABC.value,
-                image="test_image"
-            )),
-                call(NewDiscoveredEvent(
-                    title="test_new",
-                    content="test_content",
-                    url="test_url",
-                    date=1231312.89,
-                    language=Language.ENGLISH.value,
-                    source=NewsSource.ABC.value,
-                    image="test_image"
-                ))
+            [
+                call(
+                    NewDiscoveredEvent(
+                        title="test_new",
+                        content="test_content",
+                        url="test_url",
+                        date=1231312.89,
+                        language=Language.ENGLISH.value,
+                        source=NewsSource.ABC.value,
+                        image="test_image",
+                    )
+                ),
+                call(
+                    NewDiscoveredEvent(
+                        title="test_new",
+                        content="test_content",
+                        url="test_url",
+                        date=1231312.89,
+                        language=Language.ENGLISH.value,
+                        source=NewsSource.ABC.value,
+                        image="test_image",
+                    )
+                ),
             ]
         )

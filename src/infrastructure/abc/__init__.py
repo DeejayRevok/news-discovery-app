@@ -15,7 +15,9 @@ def load() -> None:
             "infrastructure.abc.abc_news_fetcher.ABCNewsFetcher",
             "infrastructure.abc.abc_news_fetcher.ABCNewsFetcher",
             [
-                Argument.no_kw_argument("@infrastructure.abc.abc_response_to_news_transformer.ABCResponseToNewsTransformer")
-            ]
+                Argument.no_kw_argument(
+                    "@infrastructure.abc.abc_response_to_news_transformer.ABCResponseToNewsTransformer"
+                )
+            ],
         )
     )

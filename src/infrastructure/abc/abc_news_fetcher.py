@@ -18,9 +18,7 @@ class ABCNewsFetcher(NewsFetcher):
 
     def fetch(self) -> Iterable[New]:
         user_agent = UserAgent()
-        response = get(self.__ABC_SAN_FRANCISCO_RSS_ADDRESS, headers={
-            "User-Agent": user_agent.random
-        })
+        response = get(self.__ABC_SAN_FRANCISCO_RSS_ADDRESS, headers={"User-Agent": user_agent.random})
 
         try:
             response.raise_for_status()

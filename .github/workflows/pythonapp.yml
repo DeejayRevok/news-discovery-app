@@ -12,35 +12,25 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python 3.8
+      - name: Set up Python 3.10
         uses: actions/setup-python@v1
         with:
-          python-version: 3.8
+          python-version: 3.10
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements-dev.txt
           pip install -r requirements-prod.txt
-          pip install -r requirements-beat.txt
       - name: Check formatting
         run: tox -e black -- --check
       - name: Check style
         run: tox -e flake8
       - name: Test with unittest
         run: tox -e tests
-      - name: Check test coverage
-        run: tox -e coverage_check
-      - name: Generate coverage report
+      - name: Coverage report
         run: tox -e coverage_report
-      - name: Codecov upload
-        uses: codecov/codecov-action@v1.0.5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage_news_discovery_app.xml
       - name: Build the docker discovery app image
         run: docker build -t djrevok/news-discovery-app:latest .
-      - name: Build the docker discovery beat image
-        run: docker build -f Dockerfile_beat -t djrevok/news-discovery-beat:latest .
       - name: Login to docker hub
         if: github.ref == 'refs/heads/develop'
         uses: actions-hub/docker/login@master
@@ -52,8 +42,3 @@ jobs:
         uses: actions-hub/docker@master
         with:
           args: push djrevok/news-discovery-app:latest
-      - name: Publish docker discovery beat image
-        if: github.ref == 'refs/heads/develop'
-        uses: actions-hub/docker@master
-        with:
-          args: push djrevok/news-discovery-beat:latest

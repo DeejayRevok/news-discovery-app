@@ -22,9 +22,7 @@ class DiscoverNewsCommandHandler(CommandHandler):
         news_fetcher = self.__news_fetcher_selector.select(news_source)
         for new in news_fetcher.fetch():
             self.__logger.info(f"Discovered new with title {new.title}")
-            self.__event_bus.transport(
-                self.__create_event_from_new(new)
-            )
+            self.__event_bus.transport(self.__create_event_from_new(new))
         self.__logger.info(f"Finished discovering news from {command.news_source}")
 
     def __create_event_from_new(self, new: New) -> NewDiscoveredEvent:
@@ -35,7 +33,7 @@ class DiscoverNewsCommandHandler(CommandHandler):
             source=new.source.value,
             date=new.date,
             language=new.language.value,
-            image=new.image
+            image=new.image,
         )
 
     @classmethod

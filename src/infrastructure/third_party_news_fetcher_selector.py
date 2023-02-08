@@ -9,10 +9,10 @@ from infrastructure.politico.politico_news_fetcher import PoliticoNewsFetcher
 
 class ThirdPartyNewsFetcherSelector(NewsFetcherSelector):
     def __init__(
-            self,
-            abc_fetcher: ABCNewsFetcher,
-            confidencial_fetcher: ConfidencialNewsFetcher,
-            politico_fetcher: PoliticoNewsFetcher
+        self,
+        abc_fetcher: ABCNewsFetcher,
+        confidencial_fetcher: ConfidencialNewsFetcher,
+        politico_fetcher: PoliticoNewsFetcher,
     ):
         self.__abc_fetcher = abc_fetcher
         self.__confidencial_fetcher = confidencial_fetcher

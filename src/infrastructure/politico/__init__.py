@@ -15,7 +15,9 @@ def load() -> None:
             "infrastructure.politico.politico_news_fetcher.PoliticoNewsFetcher",
             "infrastructure.politico.politico_news_fetcher.PoliticoNewsFetcher",
             [
-                Argument.no_kw_argument("@infrastructure.politico.politico_response_to_news_transformer.PoliticoResponseToNewsTransformer")
-            ]
+                Argument.no_kw_argument(
+                    "@infrastructure.politico.politico_response_to_news_transformer.PoliticoResponseToNewsTransformer"
+                )
+            ],
         )
     )

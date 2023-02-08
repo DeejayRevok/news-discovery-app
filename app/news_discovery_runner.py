@@ -11,7 +11,9 @@ from app.loaders import load_app
 def run() -> None:
     load_app()
     args = __load_args()
-    command_bus: CommandBus = container_builder.get("bus_station.command_terminal.bus.synchronous.sync_command_bus.SyncCommandBus")
+    command_bus: CommandBus = container_builder.get(
+        "bus_station.command_terminal.bus.synchronous.sync_command_bus.SyncCommandBus"
+    )
     command = DiscoverNewsCommand(news_source=args["source"])
     command_bus.transport(command)
 
