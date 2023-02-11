@@ -19,8 +19,6 @@ jobs:
           echo "::set-output name=version::$VERSION"
       - name: Build the app docker image
         run: docker build -t djrevok/news-discovery-app:${{ steps.get_version.outputs.version }} .
-      - name: Build the beat docker image
-        run: docker build -f Dockerfile_beat -t djrevok/news-discovery-beat:${{ steps.get_version.outputs.version }} .
       - name: Login to docker hub
         uses: actions-hub/docker/login@master
         env:
@@ -30,10 +28,6 @@ jobs:
         uses: actions-hub/docker@master
         with:
             args: push djrevok/news-discovery-app:${{ steps.get_version.outputs.version }}
-      - name: Publish beat docker image
-        uses: actions-hub/docker@master
-        with:
-          args: push djrevok/news-discovery-beat:${{ steps.get_version.outputs.version }}
       - name: Setup helm
         uses: azure/setup-helm@v1
       - name: Build helm chart
