@@ -6,8 +6,10 @@ from pypendency.definition import Definition
 def load() -> None:
     container_builder.set_definition(
         Definition(
-            "infrastructure.confidencial.confidencial_response_to_news_transformer.ConfidencialResponseToNewsTransformer",
-            "infrastructure.confidencial.confidencial_response_to_news_transformer.ConfidencialResponseToNewsTransformer",
+            "infrastructure.confidencial"
+            ".confidencial_response_to_news_transformer.ConfidencialResponseToNewsTransformer",
+            "infrastructure.confidencial"
+            ".confidencial_response_to_news_transformer.ConfidencialResponseToNewsTransformer",
         )
     )
     container_builder.set_definition(
@@ -16,7 +18,8 @@ def load() -> None:
             "infrastructure.confidencial.confidencial_news_fetcher.ConfidencialNewsFetcher",
             [
                 Argument.no_kw_argument(
-                    "@infrastructure.confidencial.confidencial_response_to_news_transformer.ConfidencialResponseToNewsTransformer"
+                    "@infrastructure.confidencial"
+                    ".confidencial_response_to_news_transformer.ConfidencialResponseToNewsTransformer"
                 )
             ],
         )
