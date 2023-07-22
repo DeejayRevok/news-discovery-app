@@ -1,8 +1,8 @@
 from argparse import ArgumentParser
 from typing import Dict
 
-from bus_station.command_terminal.bus.command_bus import CommandBus
-from pypendency.builder import container_builder
+from bus_station.command_terminal.bus.synchronous.sync_command_bus import SyncCommandBus
+from yandil.container import default_container
 
 from application.discover_news.discover_news_command import DiscoverNewsCommand
 from app.loaders import load_app
@@ -11,9 +11,7 @@ from app.loaders import load_app
 def run() -> None:
     load_app()
     args = __load_args()
-    command_bus: CommandBus = container_builder.get(
-        "bus_station.command_terminal.bus.synchronous.sync_command_bus.SyncCommandBus"
-    )
+    command_bus = default_container[SyncCommandBus]
     command = DiscoverNewsCommand(news_source=args["source"])
     command_bus.transport(command)
 

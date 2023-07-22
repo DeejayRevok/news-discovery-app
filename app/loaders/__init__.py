@@ -1,3 +1,4 @@
+from app.loaders.configuration_loader import load as load_configuration
 from app.loaders.container_loader import load as load_container
 from app.loaders.logger_loader import load as load_logger
 from app.loaders.elastic_apm_loader import load as load_apm
@@ -9,6 +10,7 @@ from app.loaders.buses.command.middlewares_loader import load as load_command_bu
 
 
 def load_app():
+    load_configuration()
     load_logger()
     load_redis()
     load_rabbitmq()
